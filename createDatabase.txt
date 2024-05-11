@@ -70,3 +70,45 @@ Insert into the table:
  # select * from movies;
 
 =====================================
+
+package jdbcdemo;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class SelectQueryDemo {
+
+	public static void main(String[] args) throws ClassNotFoundException, SQLException {
+		
+		//1. Register the Driver class
+			
+			
+//2. Create Connection
+			
+		
+		String dburl="jdbc:mysql://localhost:3306/animated_movies";
+		String username = "root";
+		String password = "";
+		String query = "select * from movies";
+		
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		//DB connection string
+		Connection con = DriverManager.getConnection(dburl,username,password);
+		
+		Statement stmt = con.createStatement();
+		ResultSet rs = stmt.executeQuery(query);
+		
+		//Execute the query
+		
+		while(rs.next()) {
+			
+			System.out.print("Title: " + rs.getString("title"));
+			
+		}
+			
+	}
+
+}
