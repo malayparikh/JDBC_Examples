@@ -1,3 +1,14 @@
+mysql> use animated_movies;
+Database changed
+mysql> Delimiter $$
+mysql> create procedure SelectAllMovies()
+    -> Begin
+    -> select * from movies;
+    -> End $$
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> Delimiter ;
+======================================================
 package jdbcdemo;
 
 import java.sql.Connection;
